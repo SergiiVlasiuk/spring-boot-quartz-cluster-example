@@ -83,3 +83,4 @@ To add a worker to this swarm, run the following command:
     docker events --since 30m
     docker stack rm quartz_cluster
     docker service logs quartz_cluster_quartz-worker -f
+    docker swarm leave
