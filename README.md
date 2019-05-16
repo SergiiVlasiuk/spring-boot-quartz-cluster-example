@@ -33,6 +33,13 @@ After it starts run `worker`.
 
 After that open in your browser swagger ui [http://localhost:8080/swagger-ui.html#!/](http://localhost:8080/swagger-ui.html#!/)
 
+### some cluster issues or difficulties and solutions:
+
+ - https://www.ebayinc.com/stories/blogs/tech/performance-tuning-on-quartz-scheduler/
+ - https://airboxlab.github.io/performance/scalability/scheduler/quartz/2017/06/20/perf_tuning_quartz.html
+ - https://github.com/quartz-scheduler/quartz/issues/107#issuecomment-292043925
+
+`acquireTriggersWithinLock=true`
 
 # Docker
 
