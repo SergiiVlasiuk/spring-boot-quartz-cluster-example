@@ -74,6 +74,7 @@ public class TestJob1 implements Job, Serializable {
       try {
         TriggerKey triggerKey = trigger.getKey();
         logger.info("rescheduling trigger " + triggerKey + " " + trigger.getTimesTriggered());
+//        scheduler.scheduleJob(triggerKey, newTrigger().build()); // as alternative case
         scheduler.rescheduleJob(triggerKey, newTrigger()
             .withIdentity(triggerKey.getName(), trigger.getJobGroup().toString())
             .startAt(Date.from(
