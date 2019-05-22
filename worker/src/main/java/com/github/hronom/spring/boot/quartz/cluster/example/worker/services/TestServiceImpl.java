@@ -17,11 +17,11 @@ public class TestServiceImpl implements TestService {
 
     public void run(String id) throws Exception {
         logger.info("Running job on worker, job id " + id);
-        if (random.nextInt(3) == 1) {
+        if (random.nextInt(100) == 1) {
             throw new Exception("Randomly generated test exception on worker");
         }
         try {
-            Thread.sleep(TimeUnit.MINUTES.toMillis(1));
+            Thread.sleep(TimeUnit.SECONDS.toMillis(1));
         } catch (InterruptedException e) {
             logger.error("Error", e);
         }

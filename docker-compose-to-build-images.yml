@@ -1,4 +1,6 @@
-version: '3.7'
+#version: '3.7'
+#version: '3.5'
+version: '3.5'
 services:
   docker-mysql:
     image: mysql:5.7.22
@@ -13,12 +15,12 @@ services:
         max-file: "10"
     networks:
       - quartz-cluster
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost"]
-      interval: 1m30s
-      timeout: 10s
-      retries: 3
-      start_period: 40s
+#    healthcheck:
+#      test: ["CMD", "curl", "-f", "http://localhost"]
+#      interval: 1m30s
+#      timeout: 10s
+#      retries: 3
+#      start_period: 40s
   quartz-supervisor:
     build:
       context: ./supervisor
@@ -54,7 +56,14 @@ services:
 
 networks:
   quartz-cluster:
-    name: quartz_network
+    driver: bridge
+#    name: quartz_network
+#networks:
+#  front-tier:
+#    driver: bridge
+#  back-tier:
+#    driver: bridge
+#    internal: true
 
 #
 #  default:

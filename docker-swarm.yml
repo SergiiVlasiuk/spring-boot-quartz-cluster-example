@@ -47,4 +47,5 @@ services:
 
 networks:
   quartz-cluster:
-    name: quartz_network
+#    driver: bridge
+#    name: quartz_network

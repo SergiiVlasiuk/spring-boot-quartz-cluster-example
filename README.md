@@ -5,7 +5,7 @@ Also in this example we autowire service that currently runs on the instance whe
 ## Description of modules
 ### Supervisor module
 The supervisor module have Swagger ui with REST commands. It available at [http://localhost:8080/swagger-ui.html#!/](http://localhost:8080/swagger-ui.html#!/)
-You can use this commands to add jobs, view jobs statuses and delete jobs.
+You can use this commands to add jobs, view jobs statuses and delete job or jobs.
 
 ### Worker module
 Executes tasks that submited to the cluster.
@@ -20,7 +20,7 @@ docker-compose up -d
 ```
 to build images
 ```
-docker-compose -f docker-compose-to-build-images.yml build -d
+docker-compose -f docker-compose-to-build-images.yml build --no-cache
 ```
 to build and start images
 ```
@@ -81,6 +81,7 @@ To add a worker to this swarm, run the following command:
 
 
     docker-compose build --no-cache
+    docker-compose -f docker-compose-to-build-images.yml build --no-cache
     docker stack deploy quartz_cluster -c docker-swarm.yml
     docker ps
     docker service ls
@@ -90,4 +91,6 @@ To add a worker to this swarm, run the following command:
     docker events --since 30m
     docker stack rm quartz_cluster
     docker service logs quartz_cluster_quartz-worker -f
-    docker swarm leave
+    docker service logs quartz_cluster_quartz-supervisor -f
+    docker swarm leave --force
+    docker swarm leave -f
